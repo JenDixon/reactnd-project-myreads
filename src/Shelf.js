@@ -17,7 +17,7 @@ class Shelf extends Component {
 				return book.shelf === bookTitleMap[title];
 			})
 			.map((book) => (
-				           <Book book = { book } onShelfUpdate = {this.handleUpdateShelf} />
+				           <Book book={ book } onShelfUpdate={this.handleUpdateShelf} />
 			            ))
 
 		return (

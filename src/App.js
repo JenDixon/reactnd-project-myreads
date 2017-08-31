@@ -2,7 +2,7 @@ import React from 'react';
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 import Shelf from './Shelf';
-import Book from './Book';
+import Search from './Search';
 
 class BooksApp extends React.Component {
   state = {
@@ -23,9 +23,13 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then((books) => {
+    BooksAPI.update(book, shelf).then((books) =>  {
       this.getBooks();
     })
+  }
+
+  updateQuery = (event) => {
+    this.setState({ query: this.event.query })
   }
 
   getBooks = () => {
@@ -46,6 +50,7 @@ class BooksApp extends React.Component {
       <div className="app">
         {this.state.showSearchPage ? (
           <div className="search-books">
+          <Search />
             <div className="search-books-bar">
               <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
               <div className="search-books-input-wrapper">
@@ -57,12 +62,18 @@ class BooksApp extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
+                <input
+                  type="text"
+                  placeholder="Search by title or authorx"
+                  value={ this.state.query }
+                  onChange={ (event) => { this.updateQuery(event.target.value)  }}/>
 
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+
+              </ol>
             </div>
           </div>
         ) : (
@@ -71,13 +82,13 @@ class BooksApp extends React.Component {
               <h1>MyReads</h1>
             </div>
             <div className="list-books-content">
-              <div>
+            <div>
 
-              <Shelf books={ this.state.books } title="Currently Reading" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook = {this.updateShelf} />
+              <Shelf books={ this.state.books } title="Currently Reading" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook={this.updateShelf} />
 
-              <Shelf books={ this.state.books } title="Want to Read" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook = {this.updateShelf} />
+              <Shelf books={ this.state.books } title="Want to Read" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook={this.updateShelf} />
 
-              <Shelf books={ this.state.books } title="Read" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook = {this.updateShelf} />
+              <Shelf books={ this.state.books } title="Read" bookTitleMap={ BOOK_TITLE_MAP } onMoveBook={this.updateShelf} />
 
               </div>
             </div>
