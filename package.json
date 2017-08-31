@@ -12,6 +12,7 @@
     "eslint-plugin-react": "^7.3.0",
     "jsdoc": "^3.5.4",
     "prettier": "^1.6.1",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "0.9.5"
   },
   "scripts": {
