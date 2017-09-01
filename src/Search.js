@@ -14,6 +14,17 @@ class Search extends Component {
 		this.setState({ query: query.trim() });
 
 		BooksAPI.search(query, 3).then(books => {
+			books = books.map(book => {
+				book.shelf = "none";
+
+				this.props.shelvedBooks.forEach(shelvedBook => {
+					if (book.id === shelvedBook.id) {
+						book.shelf = shelvedBook.shelf;
+					}
+				});
+				return book;
+			});
+
 			this.setState({ books });
 		});
 	};

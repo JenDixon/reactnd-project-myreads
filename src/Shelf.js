@@ -12,7 +12,6 @@ class Shelf extends Component {
 		let books = this.props.books;
 		let booksByCategory = books
 			.filter(book => {
-				console.log(book);
 				return book.shelf === bookTitleMap[title];
 			})
 			.map(book => (
