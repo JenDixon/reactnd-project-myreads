@@ -3,6 +3,10 @@ import PropTypes from "prop-types";
 import Book from "./Book";
 
 class Shelf extends Component {
+	static propTypes = {
+		handleUpdateShelf: PropTypes.func.isRequired
+	};
+
 	handleUpdateShelf = (book, shelf) => {
 		this.props.onMoveBook(book, shelf);
 	};

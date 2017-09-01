@@ -1,11 +1,17 @@
 import React from "react";
 import { Link, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 import Shelf from "./Shelf";
 import Search from "./Search";
 
 class BooksApp extends React.Component {
+  static propTypes = {
+    updateShelf: PropTypes.func.isRequired,
+    getBooks: PropTypes.func.isRequired
+  };
+
   state = {
     books: []
   };
@@ -32,7 +38,8 @@ class BooksApp extends React.Component {
     const BOOK_TITLE_MAP = {
       "Currently Reading": "currentlyReading",
       "Want to Read": "wantToRead",
-      Read: "read"
+      Read: "read",
+      None: "none"
     };
 
     return (
