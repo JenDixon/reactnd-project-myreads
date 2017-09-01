@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import * as BooksAPI from "./BooksAPI";
 import Book from "./Book";
 import Shelf from "./Shelf";
+import sortBy from "sort-by";
+import escapeRegExp from "escape-string-regexp";
 
 class Search extends Component {
 	state = {
@@ -14,23 +16,33 @@ class Search extends Component {
 		this.setState({ query: query.trim() });
 
 		BooksAPI.search(query, 3).then(books => {
-			books = books.map(book => {
-				book.shelf = "none";
+			if (query) {
+				books = books.map(book => {
+					book.shelf = "none";
 
-				this.props.shelvedBooks.forEach(shelvedBook => {
-					if (book.id === shelvedBook.id) {
-						book.shelf = shelvedBook.shelf;
-					}
+					this.props.shelvedBooks.forEach(shelvedBook => {
+						if (book.id === shelvedBook.id) {
+							book.shelf = shelvedBook.shelf;
+						}
+					});
+					return book;
 				});
-				return book;
-			});
 
-			this.setState({ books });
+				this.setState({ books });
+			} else {
+				this.setState({ books: [] });
+			}
 		});
 	};
 
 	handleUpdateShelf = (book, shelf) => {
 		this.props.onMoveBook(book, shelf);
+	};
+
+	clearResults = () => {
+		if (!this.state.query) {
+			this.setState({ books: [] });
+		}
 	};
 
 	render() {
