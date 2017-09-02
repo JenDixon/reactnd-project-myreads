@@ -4,6 +4,12 @@ import { Link } from "react-router-dom";
 import Shelf from "./Shelf";
 
 class BookList extends Component {
+	static propTypes = {
+		bookTitleMap: propTypes.object.isRequired,
+		books: propTypes.array.isRequired,
+		updateShelf: propTypes.func.isRequired
+	};
+
 	render() {
 		const { bookTitleMap, books, updateShelf } = this.props;
 

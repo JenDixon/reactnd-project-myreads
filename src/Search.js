@@ -6,9 +6,9 @@ import Book from "./Book";
 
 class Search extends Component {
 	static propTypes = {
-		updateQuery: propTypes.func.isRequired,
-		handleUpdateShelf: propTypes.func.isRequired,
-		clearResults: propTypes.func.isRequired
+		updateQuery: propTypes.func,
+		handleUpdateShelf: propTypes.func,
+		clearResults: propTypes.func
 	};
 
 	state = {
@@ -40,7 +40,9 @@ class Search extends Component {
 	};
 
 	handleUpdateShelf = (book, shelf) => {
+		console.log(book.shelf);
 		this.props.onMoveBook(book, shelf);
+		console.log(book.shelf);
 	};
 
 	clearResults = () => {
@@ -72,6 +74,7 @@ class Search extends Component {
 						{this.state.books.map(book => {
 							return (
 								<Book
+									key={book.id}
 									book={book}
 									onShelfUpdate={this.handleUpdateShelf}
 								/>

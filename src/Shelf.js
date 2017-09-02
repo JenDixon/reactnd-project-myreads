@@ -4,7 +4,7 @@ import Book from "./Book";
 
 class Shelf extends Component {
 	static propTypes = {
-		handleUpdateShelf: propTypes.func.isRequired
+		handleUpdateShelf: propTypes.func
 	};
 
 	handleUpdateShelf = (book, shelf) => {
@@ -13,7 +13,6 @@ class Shelf extends Component {
 
 	render() {
 		const { title, bookTitleMap, books } = this.props;
-		//let books = this.props.books;
 		let booksByCategory = books
 			.filter(book => {
 				return book.shelf === bookTitleMap[title];

@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 
 class Book extends Component {
 	static propTypes = {
-		moveToShelf: propTypes.func.isRequired
+		moveToShelf: propTypes.func
 	};
 
 	moveToShelf(event) {
