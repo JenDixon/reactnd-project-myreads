@@ -1,10 +1,10 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
-import Shelf from "./Shelf";
 import Search from "./Search";
+import BookList from "./BookList";
 
 class BooksApp extends React.Component {
   static propTypes = {
@@ -57,38 +57,11 @@ class BooksApp extends React.Component {
           exact
           path="/"
           render={() => (
-            <div className="list-books">
-              <div className="list-books-title">
-                <h1>MyReads</h1>
-              </div>
-              <div className="list-books-content">
-                <div>
-                  <Shelf
-                    books={this.state.books}
-                    title="Currently Reading"
-                    bookTitleMap={BOOK_TITLE_MAP}
-                    onMoveBook={this.updateShelf}
-                  />
-
-                  <Shelf
-                    books={this.state.books}
-                    title="Want to Read"
-                    bookTitleMap={BOOK_TITLE_MAP}
-                    onMoveBook={this.updateShelf}
-                  />
-
-                  <Shelf
-                    books={this.state.books}
-                    title="Read"
-                    bookTitleMap={BOOK_TITLE_MAP}
-                    onMoveBook={this.updateShelf}
-                  />
-                </div>
-              </div>
-              <div className="open-search">
-                <Link to="/search">Add a book</Link>
-              </div>
-            </div>
+            <BookList
+              bookTitleMap={BOOK_TITLE_MAP}
+              books={this.state.books}
+              updateShelf={this.updateShelf}
+            />
           )}
         />
       </div>
