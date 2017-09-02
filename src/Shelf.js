@@ -19,7 +19,11 @@ class Shelf extends Component {
 				return book.shelf === bookTitleMap[title];
 			})
 			.map(book => (
-				<Book book={book} onShelfUpdate={this.handleUpdateShelf} />
+				<Book
+					key={book.id}
+					book={book}
+					onShelfUpdate={this.handleUpdateShelf}
+				/>
 			));
 
 		return (

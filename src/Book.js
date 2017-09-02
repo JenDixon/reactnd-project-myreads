@@ -11,7 +11,7 @@ class Book extends Component {
 	}
 
 	render() {
-		const { book, onShelfUpdate } = this.props;
+		const { book } = this.props;
 
 		return (
 			<li key={book.id}>
