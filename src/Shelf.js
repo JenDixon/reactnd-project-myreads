@@ -12,8 +12,8 @@ class Shelf extends Component {
 	};
 
 	render() {
-		const { title, bookTitleMap } = this.props;
-		let books = this.props.books;
+		const { title, bookTitleMap, books } = this.props;
+		//let books = this.props.books;
 		let booksByCategory = books
 			.filter(book => {
 				return book.shelf === bookTitleMap[title];
