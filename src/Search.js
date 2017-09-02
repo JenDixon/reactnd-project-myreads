@@ -40,9 +40,16 @@ class Search extends Component {
 	};
 
 	handleUpdateShelf = (book, shelf) => {
-		console.log(book.shelf);
+		let updatedBooks = this.state.books.map(updatedBook => {
+			if (book.id === updatedBook.id) {
+				updatedBook.shelf = shelf;
+			}
+			return updatedBook;
+		});
+
+		this.setState({ books: updatedBooks });
+
 		this.props.onMoveBook(book, shelf);
-		console.log(book.shelf);
 	};
 
 	clearResults = () => {
