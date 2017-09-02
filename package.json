@@ -1,17 +1,10 @@
 {
   "dependencies": {
-    "escape-string-regexp": "^1.0.5",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "sort-by": "^1.2.0"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-plugin-prettier": "^2.2.0",
-    "eslint-plugin-react": "^7.3.0",
-    "jsdoc": "^3.5.4",
-    "prettier": "^1.6.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "0.9.5"
   },

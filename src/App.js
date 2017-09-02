@@ -8,8 +8,8 @@ import Search from "./Search";
 
 class BooksApp extends React.Component {
   static propTypes = {
-    updateShelf: PropTypes.func.isRequired,
-    getBooks: PropTypes.func.isRequired
+    updateShelf: PropTypes.func,
+    getBooks: PropTypes.func
   };
 
   state = {

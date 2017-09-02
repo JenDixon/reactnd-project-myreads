@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 class Book extends Component {
 	static propTypes = {
-		moveToShelf: PropTypes.func.isRequired
+		moveToShelf: propTypes.func.isRequired
 	};
 
 	moveToShelf(event) {
