@@ -58,7 +58,6 @@ class BooksApp extends React.Component {
           path="/"
           render={() => (
             <div className="list-books">
-              <Link to="/search">Search</Link>
               <div className="list-books-title">
                 <h1>MyReads</h1>
               </div>
@@ -87,9 +86,7 @@ class BooksApp extends React.Component {
                 </div>
               </div>
               <div className="open-search">
-                <a onClick={() => this.setState({ showSearchPage: true })}>
-                  Add a book
-                </a>
+                <Link to="/search">Add a book</Link>
               </div>
             </div>
           )}
